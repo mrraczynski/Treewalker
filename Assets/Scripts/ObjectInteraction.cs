@@ -72,7 +72,7 @@ public class ObjectInteraction : MonoBehaviour
     private void FixedUpdate()
     {
         
-        Debug.Log(Input.GetButton("Drag"));
+        //Debug.Log(Input.GetButton("Drag"));
         Rigidbody2D rgb = gameObject.GetComponent<Rigidbody2D>();
         if (collisionGameObject)
         {
