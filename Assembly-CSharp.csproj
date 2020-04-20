@@ -65,6 +65,7 @@
      <Compile Include="Assets\FurBall2D_mobile\Scripts\CameraController_m.cs" />
      <Compile Include="Assets\FurBall2D_mobile\Scripts\DestroyCloud_m.cs" />
      <Compile Include="Assets\FurBall2D_mobile\Scripts\PlayerController_m.cs" />
+     <Compile Include="Assets\Scripts\CollectController.cs" />
      <Compile Include="Assets\Scripts\ObjectInteraction.cs" />
      <Compile Include="Assets\Scripts\ObjectJumping.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
@@ -160,6 +161,9 @@
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/1/Documents/GitHub/Treewalker/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Cinemachine">
+ <HintPath>C:/Users/1/Documents/GitHub/Treewalker/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>C:/Users/1/Documents/GitHub/Treewalker/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
@@ -184,17 +188,14 @@
  <Reference Include="Unity.2D.Tilemap.Editor">
  <HintPath>C:/Users/1/Documents/GitHub/Treewalker/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="com.unity.cinemachine.editor">
+ <HintPath>C:/Users/1/Documents/GitHub/Treewalker/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.TextMeshPro">
  <HintPath>C:/Users/1/Documents/GitHub/Treewalker/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Users/1/Documents/GitHub/Treewalker/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="Cinemachine">
- <HintPath>C:/Users/1/Documents/GitHub/Treewalker/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.cinemachine.editor">
- <HintPath>C:/Users/1/Documents/GitHub/Treewalker/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/2019.2.18f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

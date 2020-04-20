@@ -16,12 +16,19 @@ public class PlayerController : MonoBehaviour {
 	private Animator cloudanim;
 	public GameObject Cloud;
 
+	public int score;
+
 
 	private Rigidbody2D rb2d;
 	private Animator anim;
 	private bool isGrounded = false;
 
     public bool isInteraction = false;
+
+	public void AddScore()
+	{
+		score++;
+	}
 
 
 	// Use this for initialization
