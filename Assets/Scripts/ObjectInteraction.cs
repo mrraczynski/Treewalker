@@ -13,6 +13,12 @@ public class ObjectInteraction : MonoBehaviour
     public float force = 1;
     public Collider2D triggerCollider;
 
+    public bool isInteraction()
+    {
+        return interaction;
+    }
+        
+
     private void Start()
     {
         interactionText.SetActive(false);
