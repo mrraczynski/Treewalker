@@ -19,10 +19,13 @@ public class ObjectJumping : MonoBehaviour
         collision.gameObject.GetComponent<Collider2D>().Raycast(new Vector2(.0f, -1.0f), hits, 1.0f);
         if (hits[0])
         {
-            Debug.Log(hits[0].collider.tag);
+            //Debug.Log(hits[0].collider.tag);
             if (hits[0].collider.tag == "JumpingPlatform")
             {
+                collision.gameObject.GetComponent<PlayerController>().SetGrounded (false);
+                collision.gameObject.GetComponent<PlayerController>().SetDoubleJump (true);
                 collision.rigidbody.AddForce(new Vector2(.0f, jumpForce), ForceMode2D.Impulse);
+
             }
 
         }

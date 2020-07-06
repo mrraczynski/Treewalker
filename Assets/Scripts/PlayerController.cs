@@ -4,17 +4,25 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 	
 	public float maxSpeed = 6f;
-	public float jumpForce = 1000f;
+	public float jumpForce = 30f;
 	public Transform groundCheck;
 	public LayerMask whatIsGround;
 	public float verticalSpeed = 20;
 	[HideInInspector]
 	public bool lookingRight = true;
-	bool doubleJump = false;
+	private bool doubleJump = false;
 	public GameObject Boost;
+	public GameObject Cloud;
+	public float boostingTime = 10;
+	public float boostingCoefficient = 2;
+	public bool isInteraction = false;
+
+	private float oldGravScale;
+	private float oldDrag;
+	private float flyDist = 10;
 	
 	private Animator cloudanim;
-	public GameObject Cloud;
+	
 
 	public int score;
 
@@ -22,8 +30,24 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody2D rb2d;
 	private Animator anim;
 	private bool isGrounded = false;
+	private bool isFlying = false;
 
-    public bool isInteraction = false;
+    
+
+	public void SetFlyDist(float x)
+    {
+		flyDist = x;
+    }
+
+	public void SetGrounded (bool x)
+    {
+		isGrounded = x;
+    }
+
+	public void SetDoubleJump(bool x)
+	{
+		doubleJump = x;
+	}
 
 	public void AddScore()
 	{
@@ -35,6 +59,8 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		rb2d = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
+		oldGravScale = gameObject.GetComponent<Rigidbody2D>().gravityScale;
+		oldDrag = gameObject.GetComponent<Rigidbody2D>().drag;
 		//cloudanim = GetComponent<Animator>();
 
 		Cloud = GameObject.Find("Cloud");
@@ -55,10 +81,11 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-	if (Input.GetButtonDown("Jump") && (isGrounded || !doubleJump))
+		//Debug.Log(isGrounded + " " + doubleJump);
+		if (Input.GetButtonDown("Jump") && (isGrounded || !doubleJump))
 		{
-			rb2d.AddForce(new Vector2(0,jumpForce));
+			
+			rb2d.AddForce(new Vector2(0,jumpForce),ForceMode2D.Impulse);
 
 			if (!doubleJump && !isGrounded)
 			{
@@ -68,12 +95,32 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
+		if(Input.GetKeyDown(KeyCode.B))
+        {
+			StartCoroutine(PlayerBoosting());
+        }
 
-	if (Input.GetButtonDown("Vertical") && !isGrounded)
+
+		if (Input.GetButtonDown("Vertical") && !isGrounded)
 		{
 			rb2d.AddForce(new Vector2(0,-jumpForce));
 			Boost = Instantiate(Resources.Load("Prefabs/Cloud"), transform.position, transform.rotation) as GameObject;
 			//cloudanim.Play("cloud");
+		}
+		RaycastHit2D[] hits = new RaycastHit2D[1];
+		gameObject.GetComponent<Collider2D>().Raycast(new Vector2(.0f, -1.0f), hits, flyDist);
+		if (hits[0].collider)
+		{
+			if (hits[0].collider.tag != "FlyingPlatform")
+			{
+				gameObject.GetComponent<Rigidbody2D>().gravityScale = oldGravScale;
+				gameObject.GetComponent<Rigidbody2D>().drag = oldDrag;
+			}
+		}
+		else
+        {
+			gameObject.GetComponent<Rigidbody2D>().gravityScale = oldGravScale;
+			gameObject.GetComponent<Rigidbody2D>().drag = oldDrag;
 		}
 
 	}
@@ -109,6 +156,22 @@ public class PlayerController : MonoBehaviour {
 		Vector3 myScale = transform.localScale;
 		myScale.x *= -1;
 		transform.localScale = myScale;
+	}
+
+	IEnumerator PlayerBoosting ()
+    {
+		float oldMaxSpeed = maxSpeed;
+		float oldJumpForce = jumpForce;
+
+		maxSpeed = maxSpeed * boostingCoefficient;
+		jumpForce = jumpForce * boostingCoefficient;
+
+		yield return new WaitForSeconds(boostingTime);
+
+		maxSpeed = oldMaxSpeed;
+		jumpForce = oldJumpForce;
+		//gameObject.GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color", new Color(0.5f, 0.5f, 0.5f));
+		//Debug.Log(gameObject.GetComponentInChildren<SpriteRenderer>().material.color.r);
 	}
 
 }

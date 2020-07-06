@@ -75,9 +75,12 @@
     <Compile Include="Assets\FurBall2D_mobile\Scripts\PlayerController_m.cs" />
     <Compile Include="Assets\Scripts\CollectController.cs" />
     <Compile Include="Assets\Scripts\DialogController.cs" />
+    <Compile Include="Assets\Scripts\FlyingScript.cs" />
     <Compile Include="Assets\Scripts\ObjectInteraction.cs" />
     <Compile Include="Assets\Scripts\ObjectJumping.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Teleporting.cs" />
+    <Compile Include="Assets\Scripts\TeleportPointing.cs" />
     <Compile Include="Assets\Spine Examples\Other Examples\Animation Tester\SpineAnimationTesterTool.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\AttackSpineboy.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\DataAssetsFromExportsExample.cs" />
