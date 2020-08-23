@@ -7,7 +7,7 @@ public class Teleporting : MonoBehaviour
 {
 
     public GameObject anotherPoint;
-    public GameObject player;
+    //public GameObject player;
     [HideInInspector]
     public bool isEnterPoint;
 

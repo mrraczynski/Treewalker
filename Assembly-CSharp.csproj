@@ -76,6 +76,8 @@
     <Compile Include="Assets\Scripts\CollectController.cs" />
     <Compile Include="Assets\Scripts\DialogController.cs" />
     <Compile Include="Assets\Scripts\FlyingScript.cs" />
+    <Compile Include="Assets\Scripts\MovingPlatform.cs" />
+    <Compile Include="Assets\Scripts\MovingPlatformController.cs" />
     <Compile Include="Assets\Scripts\ObjectInteraction.cs" />
     <Compile Include="Assets\Scripts\ObjectJumping.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
