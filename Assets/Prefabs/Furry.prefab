@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1174817257082518392}
   - component: {fileID: 1174817257082518395}
   - component: {fileID: 1174817257082518374}
-  - component: {fileID: 5541092517584035056}
   - component: {fileID: 2969825894114846861}
+  - component: {fileID: 1269274177633502138}
   m_Layer: 9
   m_Name: Furry
   m_TagString: Player
@@ -89,13 +89,13 @@ CircleCollider2D:
   m_GameObject: {fileID: 1174817257082518396}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: dd27ae1187fa3f04189149e85195ea8e, type: 2}
+  m_Material: {fileID: 6200000, guid: d76e575e514ff19468d46d41f9dee312, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07803929, y: -0.9766378}
+  m_Offset: {x: 0.07803929, y: -0.9}
   serializedVersion: 2
-  m_Radius: 0.16772443
+  m_Radius: 0.25
 --- !u!114 &1174817257082518395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,32 +171,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5541092517584035056
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1174817257082518396}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: dd27ae1187fa3f04189149e85195ea8e, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.070855856, y: -0.21656013}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.44405413, y: 1.1914308}
-  m_EdgeRadius: 0
 --- !u!70 &2969825894114846861
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -210,8 +184,24 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06464709, y: 0.64789516}
-  m_Size: {x: 0.41273275, y: 0.6209649}
+  m_Offset: {x: 0.06464709, y: 0.06386942}
+  m_Size: {x: 0.41273275, y: 1.7890164}
+  m_Direction: 0
+--- !u!70 &1269274177633502138
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174817257082518396}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: dd27ae1187fa3f04189149e85195ea8e, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.10735953, y: -0.23911339}
+  m_Size: {x: 0.39390922, y: 1.146098}
   m_Direction: 0
 --- !u!1 &1174817257984305928
 GameObject:

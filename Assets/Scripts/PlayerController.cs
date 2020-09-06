@@ -20,7 +20,9 @@ public class PlayerController : MonoBehaviour {
 	private float oldGravScale;
 	private float oldDrag;
 	private float flyDist = 10;
-	
+	private Vector3 vel = Vector3.zero;
+	[Range(0, .3f)] [SerializeField] private float smooth = .05f;
+
 	private Animator cloudanim;
 	
 
@@ -75,14 +77,29 @@ public class PlayerController : MonoBehaviour {
 		//	cloudanim.Play("cloud");	
 
 		}
+
+		if(collision2D.gameObject.CompareTag("MovingPlatform"))
+        {
+			this.transform.parent = collision2D.transform;			
+        }
+
+	}
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+		if (collision.gameObject.CompareTag("MovingPlatform"))
+		{
+			this.transform.parent = null;
+		}
 	}
 
 
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 		//Debug.Log(isGrounded + " " + doubleJump);
-		if (Input.GetButtonDown("Jump") && (isGrounded || !doubleJump))
+		//пока отключим двойной прыжок
+		if (Input.GetButtonDown("Jump") && (isGrounded /*|| !doubleJump*/))
 		{
 			
 			rb2d.AddForce(new Vector2(0,jumpForce),ForceMode2D.Impulse);
@@ -136,7 +153,11 @@ public class PlayerController : MonoBehaviour {
 
 		anim.SetFloat ("Speed", Mathf.Abs (hor));
 
-		rb2d.velocity = new Vector2 (hor * maxSpeed, rb2d.velocity.y);
+		Vector3 targetVelocity = new Vector2(hor * maxSpeed, rb2d.velocity.y);
+		// And then smoothing it out and applying it to the character
+		rb2d.velocity = Vector3.SmoothDamp(rb2d.velocity, targetVelocity, ref vel, smooth);
+
+		//rb2d.velocity = new Vector2 (hor * maxSpeed, rb2d.velocity.y);
 		  
 		isGrounded = Physics2D.OverlapCircle (groundCheck.position, 0.15F, whatIsGround);
 
