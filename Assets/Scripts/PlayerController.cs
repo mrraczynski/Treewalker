@@ -111,16 +111,16 @@ public class PlayerController : MonoBehaviour {
 	
 
 		isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.15F, whatIsGround);
-		if (Input.GetButtonDown("Jump") && (isGrounded /*|| !doubleJump*/))
+		if (Input.GetButtonDown("Jump") && (isGrounded || !doubleJump))
 		{
-
-			rb2d.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-			/*if (!doubleJump && !isGrounded)
+			rb2d.velocity = Vector2.up * jumpForce;
+			//rb2d.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+			if (!doubleJump && !isGrounded)
 			{
 				doubleJump = true;
 				Boost = Instantiate(Resources.Load("Prefabs/Cloud"), transform.position, transform.rotation) as GameObject;
 				//	cloudanim.Play("cloud");		
-			}*/
+			}
 		}
 		//Debug.Log(isGrounded);
 		hor = Input.GetAxis("Horizontal");

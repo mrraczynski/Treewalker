@@ -8,6 +8,7 @@ public class FlyingScript : MonoBehaviour
     public float gravScale = -0.1f;
     private float drag = 1.0f;
     public float flyDist = 10f;
+    public bool force = false;
     public bool forceMod = false;
     public float flyForce = 10f;
     //private bool playerHit = false;
@@ -33,7 +34,7 @@ public class FlyingScript : MonoBehaviour
             
             if (hits[0].collider.tag == "Player")
             {
-                if (!forceMod)
+                if (!force)
                 {
                     hits[0].collider.gameObject.GetComponent<PlayerController>().SetGrounded(false);
                     //hits[0].collider.gameObject.GetComponent<PlayerController>().SetDoubleJump(true);
@@ -46,7 +47,14 @@ public class FlyingScript : MonoBehaviour
                 }
                 else
                 {
-                    hits[0].rigidbody.AddForce(transform.up * flyForce, ForceMode2D.Impulse);
+                    if (forceMod)
+                    {
+                        hits[0].rigidbody.AddForce(transform.up * flyForce, ForceMode2D.Force);
+                    }
+                    else
+                    {
+                        hits[0].rigidbody.AddForce(transform.up * flyForce, ForceMode2D.Impulse);
+                    }
                 }
 
             }
