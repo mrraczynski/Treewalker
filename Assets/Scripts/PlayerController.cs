@@ -38,6 +38,17 @@ public class PlayerController : MonoBehaviour {
 	private bool isFlying = false;
 
     
+	public void GravityModify(float gravScale, float drag)
+    {
+		gameObject.GetComponent<PlayerController>().SetGrounded(false);
+		//hits[0].collider.gameObject.GetComponent<PlayerController>().SetDoubleJump(true);
+		gameObject.GetComponent<PlayerController>().SetFlyDist(flyDist);
+		//playerHit = true;
+		//Debug.Log(hits[0].collider.tag);
+
+		gameObject.GetComponent<Rigidbody2D>().gravityScale = gravScale;
+		gameObject.GetComponent<Rigidbody2D>().drag = drag;
+	}
 
 	public void SetFlyDist(float x)
     {
@@ -103,8 +114,8 @@ public class PlayerController : MonoBehaviour {
 		//Debug.Log(isGrounded + " " + doubleJump);
 		//пока отключим двойной прыжок
 
-
-		if(Input.GetKeyDown(KeyCode.B))
+		//Debug.Log(gameObject.GetComponent<Rigidbody2D>().gravityScale);
+		if (Input.GetKeyDown(KeyCode.B))
         {
 			StartCoroutine(PlayerBoosting());
         }		

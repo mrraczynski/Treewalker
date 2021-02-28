@@ -95,8 +95,8 @@ public class MovingPlatform : MonoBehaviour
                 //Debug.Log(pauseCheck);
                 pauseCheck = true;
                 waitUntilTime = Time.time + pause;
-                Debug.Log(Time.time);
-                Debug.Log(waitUntilTime);
+               // Debug.Log(Time.time);
+                //Debug.Log(waitUntilTime);
             }
             else
             {

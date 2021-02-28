@@ -16,7 +16,9 @@ public class ObjectJumping : MonoBehaviour
             
         }*/
         RaycastHit2D[] hits = new RaycastHit2D[1];
-        collision.gameObject.GetComponent<Collider2D>().Raycast(new Vector2(.0f, -1.0f), hits, 1.0f);
+        Debug.Log(gameObject.transform.up);
+        collision.gameObject.GetComponent<Collider2D>().Raycast(-gameObject.transform.up, hits, 1.0f); //new Vector2(.0f, -1.0f)
+        Debug.Log(collision.gameObject.tag);
         if (hits[0])
         {
             //Debug.Log(hits[0].collider.tag);
@@ -24,8 +26,8 @@ public class ObjectJumping : MonoBehaviour
             {
                 collision.gameObject.GetComponent<PlayerController>().SetGrounded (false);
                 //collision.gameObject.GetComponent<PlayerController>().SetDoubleJump (true);
-                collision.rigidbody.AddForce(new Vector2(.0f, jumpForce), ForceMode2D.Impulse);
-
+                //collision.rigidbody.AddForce(gameObject.transform.up * jumpForce, ForceMode2D.Impulse);
+                collision.rigidbody.velocity = gameObject.transform.up * jumpForce;
             }
 
         }
