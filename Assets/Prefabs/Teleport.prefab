@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2457745225662702021}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 21.3, y: 1.5, z: 0}
-  m_LocalScale: {x: 0.36214, y: 0.36214, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 2457745225867863410}
   m_RootOrder: 1
@@ -47,6 +47,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -97,7 +99,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.2799999
+  m_Radius: 1.3
 --- !u!114 &2457745225662702020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +113,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anotherPoint: {fileID: 2457745225886306628}
-  player: {fileID: 0}
   isEnterPoint: 0
 --- !u!1 &2457745225867863404
 GameObject:
@@ -173,7 +174,7 @@ Transform:
   m_GameObject: {fileID: 2457745225886306628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.67, y: 0.53, z: 0}
-  m_LocalScale: {x: 0.362142, y: 0.362142, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 2457745225867863410}
   m_RootOrder: 0
@@ -192,6 +193,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -242,7 +245,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.2799999
+  m_Radius: 1.3
 --- !u!114 &2457745225886306635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,5 +259,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anotherPoint: {fileID: 2457745225662702021}
-  player: {fileID: 0}
   isEnterPoint: 0

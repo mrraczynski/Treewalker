@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
-	
+
 	public float maxSpeed = 6f;
 	public float jumpForce = 30f;
 	public Transform groundCheck;
@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour {
 
 	private float oldGravScale;
 	private float oldDrag;
+	private float oldMass;
+	private float oldAngDrag;
 	private float flyDist = 10;
 	private Vector3 vel = Vector3.zero;
 	[Range(0, .3f)] [SerializeField] private float smooth = .05f;
@@ -75,12 +77,16 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		rb2d = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
+		oldMass = gameObject.GetComponent<Rigidbody2D>().mass;
 		oldGravScale = gameObject.GetComponent<Rigidbody2D>().gravityScale;
 		oldDrag = gameObject.GetComponent<Rigidbody2D>().drag;
+		oldAngDrag = gameObject.GetComponent<Rigidbody2D>().angularDrag;
 		//cloudanim = GetComponent<Animator>();
 
 		Cloud = GameObject.Find("Cloud");
-  		//cloudanim = GameObject.Find("Cloud(Clone)").GetComponent<Animator>();
+		//cloudanim = GameObject.Find("Cloud(Clone)").GetComponent<Animator>();
+		//rb2d.gravityScale = -2;
+		//rb2d.drag = 1;
 	}
 
 
@@ -94,7 +100,7 @@ public class PlayerController : MonoBehaviour {
 
 		if(collision2D.gameObject.CompareTag("MovingPlatform"))
         {
-			transform.parent = collision2D.transform;			
+			transform.parent = collision2D.transform;
         }
 
 	}
@@ -113,7 +119,7 @@ public class PlayerController : MonoBehaviour {
     void Update () {
 		//Debug.Log(isGrounded + " " + doubleJump);
 		//пока отключим двойной прыжок
-
+		
 		//Debug.Log(gameObject.GetComponent<Rigidbody2D>().gravityScale);
 		if (Input.GetKeyDown(KeyCode.B))
         {
@@ -121,7 +127,7 @@ public class PlayerController : MonoBehaviour {
         }		
 	
 
-		isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.15F, whatIsGround);
+		isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.05F, whatIsGround);
 		if (Input.GetButtonDown("Jump") && (isGrounded || !doubleJump))
 		{
 			rb2d.velocity = Vector2.up * jumpForce;
@@ -144,16 +150,19 @@ public class PlayerController : MonoBehaviour {
 	{
 		RaycastHit2D[] hits = new RaycastHit2D[1];
 		gameObject.GetComponent<Collider2D>().Raycast(Vector2.down, hits, flyDist);
+		rb2d.velocity = new Vector2(hor * maxSpeed, rb2d.velocity.y);
 		if (hits[0].collider)
 		{
-			
+
+			//Debug.Log("here");
 			if (hits[0].collider.tag != "FlyingPlatform")
 			{
 				gameObject.GetComponent<Rigidbody2D>().gravityScale = oldGravScale;
 				gameObject.GetComponent<Rigidbody2D>().drag = oldDrag;
 				flyDist = 10;
+				
 			}
-			
+	
 		}
 		else
 		{
@@ -169,22 +178,19 @@ public class PlayerController : MonoBehaviour {
 			//cloudanim.Play("cloud");
 		}*/
 
-		anim.SetFloat ("Speed", Mathf.Abs (hor));
+		//anim.SetFloat ("Speed", Mathf.Abs (hor));
 
-		Vector3 targetVelocity = new Vector2(hor * maxSpeed, rb2d.velocity.y);
+		//Vector3 targetVelocity = new Vector2(hor * maxSpeed, rb2d.velocity.y);
 		// And then smoothing it out and applying it to the character
-		rb2d.velocity = Vector3.SmoothDamp(rb2d.velocity, targetVelocity, ref vel, smooth);
-
-		//rb2d.velocity = new Vector2 (hor * maxSpeed, rb2d.velocity.y);
-		  
+		//rb2d.velocity = Vector3.SmoothDamp(rb2d.velocity, targetVelocity, ref vel, smooth);
 		
 
-		anim.SetBool ("IsGrounded", isGrounded);
+		//anim.SetBool ("IsGrounded", isGrounded);
 
 		if ((hor > 0 && !lookingRight)||(hor < 0 && lookingRight))
 			Flip ();
 		 
-		anim.SetFloat ("vSpeed", GetComponent<Rigidbody2D>().velocity.y);
+		//anim.SetFloat ("vSpeed", GetComponent<Rigidbody2D>().velocity.y);
 	}
 
 

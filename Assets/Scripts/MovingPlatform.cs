@@ -110,11 +110,11 @@ public class MovingPlatform : MonoBehaviour
         }
         if (switching)
         {
-            platform.transform.position = Vector3.MoveTowards(platform.transform.position, point1.transform.position, speed);
+            platform.transform.position = Vector3.MoveTowards(platform.transform.position, point1.transform.position, speed * Time.fixedDeltaTime);
         }  
         else
         {
-            platform.transform.position = Vector3.MoveTowards(platform.transform.position, point2.transform.position, speed);
+            platform.transform.position = Vector3.MoveTowards(platform.transform.position, point2.transform.position, speed*Time.fixedDeltaTime);
         }
     }
 }

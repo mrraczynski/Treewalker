@@ -37,24 +37,27 @@ public class FlyingScript : MonoBehaviour
                 if (!force)
                 {
 
-                    /*hits[0].collider.gameObject.GetComponent<PlayerController>().SetGrounded(false);
+                    hits[0].collider.gameObject.GetComponent<PlayerController>().SetGrounded(false);
                     //hits[0].collider.gameObject.GetComponent<PlayerController>().SetDoubleJump(true);
                     hits[0].collider.gameObject.GetComponent<PlayerController>().SetFlyDist(flyDist);
                     //playerHit = true;
                     //Debug.Log(hits[0].collider.tag);
 
                     hits[0].rigidbody.gravityScale = gravScale;
-                    hits[0].rigidbody.drag = drag;*/
-                    hits[0].collider.gameObject.GetComponent<PlayerController>().GravityModify(gravScale,drag);
+                    hits[0].rigidbody.drag = drag;
+                    //hits[0].collider.gameObject.GetComponent<PlayerController>().GravityModify(gravScale,drag);
                 }
                 else
                 {
                     if (forceMod)
                     {
+                        Debug.Log(hits[0].rigidbody.tag);
                         hits[0].rigidbody.AddForce(transform.up * flyForce, ForceMode2D.Force);
+
                     }
                     else
                     {
+                        
                         hits[0].rigidbody.AddForce(transform.up * flyForce, ForceMode2D.Impulse);
                     }
                 }

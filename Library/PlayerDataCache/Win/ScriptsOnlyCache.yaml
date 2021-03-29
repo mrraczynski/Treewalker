@@ -18,6 +18,7 @@ ScriptsOnlyBuild:
     - PlayerController
     - PlayerCtrl
     - Teleporting
+    - TurnOffMusic
     Cinemachine.dll:
     - Cinemachine.CinemachineBrain
     - Cinemachine.CinemachineFramingTransposer
@@ -44,6 +45,12 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.TilemapPrefabStageHelper
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -81,11 +88,17 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 62
       Script: {instanceID: 0}
+    - Class: 66
+      Script: {instanceID: 0}
     - Class: 70
       Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
@@ -98,61 +111,63 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 758}
     - Class: 114
-      Script: {instanceID: 1592}
+      Script: {instanceID: 1590}
     - Class: 114
-      Script: {instanceID: 1594}
+      Script: {instanceID: 1644}
     - Class: 114
-      Script: {instanceID: 1646}
+      Script: {instanceID: 1886}
     - Class: 114
-      Script: {instanceID: 1978}
+      Script: {instanceID: 1988}
     - Class: 114
-      Script: {instanceID: 2036}
+      Script: {instanceID: 2046}
     - Class: 114
-      Script: {instanceID: 2072}
+      Script: {instanceID: 2084}
     - Class: 114
-      Script: {instanceID: 2208}
+      Script: {instanceID: 2220}
     - Class: 114
-      Script: {instanceID: 2292}
+      Script: {instanceID: 2304}
     - Class: 114
       Script: {instanceID: 2392}
     - Class: 114
-      Script: {instanceID: 2410}
+      Script: {instanceID: 2408}
     - Class: 114
-      Script: {instanceID: 2696}
+      Script: {instanceID: 2426}
     - Class: 114
-      Script: {instanceID: 2746}
+      Script: {instanceID: 2714}
     - Class: 114
-      Script: {instanceID: 2838}
+      Script: {instanceID: 2764}
     - Class: 114
-      Script: {instanceID: 2942}
+      Script: {instanceID: 2856}
     - Class: 114
-      Script: {instanceID: 3022}
+      Script: {instanceID: 2960}
     - Class: 114
-      Script: {instanceID: 3138}
+      Script: {instanceID: 3042}
     - Class: 114
-      Script: {instanceID: 3150}
+      Script: {instanceID: 3158}
     - Class: 114
-      Script: {instanceID: 3404}
+      Script: {instanceID: 3172}
     - Class: 114
-      Script: {instanceID: 3914}
+      Script: {instanceID: 3430}
     - Class: 114
-      Script: {instanceID: 3934}
+      Script: {instanceID: 3944}
     - Class: 114
-      Script: {instanceID: 4066}
+      Script: {instanceID: 3964}
     - Class: 114
-      Script: {instanceID: 4288}
+      Script: {instanceID: 4098}
     - Class: 114
-      Script: {instanceID: 5060}
+      Script: {instanceID: 4320}
     - Class: 114
-      Script: {instanceID: 5482}
+      Script: {instanceID: 5106}
     - Class: 114
-      Script: {instanceID: 5568}
+      Script: {instanceID: 5530}
     - Class: 114
-      Script: {instanceID: 5576}
+      Script: {instanceID: 5616}
     - Class: 114
-      Script: {instanceID: 5678}
+      Script: {instanceID: 5624}
     - Class: 114
-      Script: {instanceID: 5772}
+      Script: {instanceID: 5726}
+    - Class: 114
+      Script: {instanceID: 5822}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -190,18 +205,6 @@ ScriptsOnlyBuild:
     - Class: 1839735485
       Script: {instanceID: 0}
   scriptHashData:
-  - hash:
-      serializedVersion: 2
-      Hash: 69415240821be7986b27e72bf9609a30
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Button
-  - hash:
-      serializedVersion: 2
-      Hash: caa533b001ae39b864ba8425019e2268
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Shadow
   - hash:
       serializedVersion: 2
       Hash: 699619b86d9359741a4f58540298c80b
@@ -336,7 +339,13 @@ ScriptsOnlyBuild:
     className: HorizontalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 344a8c2e106a0a4e098e91a52e0af063
+      Hash: caa533b001ae39b864ba8425019e2268
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Shadow
+  - hash:
+      serializedVersion: 2
+      Hash: f0786811516f7de8befd7a3e181e567a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_FontAsset
@@ -460,6 +469,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_StyleSheet
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TurnOffMusic
   - hash:
       serializedVersion: 2
       Hash: f1d735cc1a21c3704ab52568f4fbfcf8
@@ -654,7 +669,7 @@ ScriptsOnlyBuild:
     className: AudioTrack
   - hash:
       serializedVersion: 2
-      Hash: c1933cc0a2f4ff6eb13333347497beb3
+      Hash: a74405a4829a834d107a0c6e072719ed
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: TimelineAsset
@@ -898,6 +913,12 @@ ScriptsOnlyBuild:
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
     className: CinemachineImpulseListener
+  - hash:
+      serializedVersion: 2
+      Hash: 69415240821be7986b27e72bf9609a30
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Button
   - hash:
       serializedVersion: 2
       Hash: 349d08daa6108b9a28f8c38fd40ce96f
@@ -1506,7 +1527,7 @@ ScriptsOnlyBuild:
     className: Spineboy
   - hash:
       serializedVersion: 2
-      Hash: 5cc439bf63c0539d39588e69465ac2ab
+      Hash: fd68d84f33fad85aac38f2739c0ee270
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SpriteAsset
@@ -1572,7 +1593,7 @@ ScriptsOnlyBuild:
     className: BoundingBoxFollower
   - hash:
       serializedVersion: 2
-      Hash: 5c799767fb47092ee8ef97106aaf82fb
+      Hash: 68fd184f353e83766356187324dad374
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FlyingScript
@@ -1693,4 +1714,4 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/mrrac/Documents/GitHub/Treewalker/Builds/v0.0.2/Treewalker.exe
+  playerPath: C:/Users/mrrac/Documents/GitHub/Treewalker/Builds/v0.0.6/Treewalker.exe
