@@ -146,6 +146,7 @@
     <Compile Include="Assets\FiveFinger\KOACharacter\Script\ViewUnit.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\Getting Started Scripts\SpineboyBeginnerView.cs" />
     <Compile Include="Assets\FurBall2D\Scripts\HitVelDetection.cs" />
+    <Compile Include="Assets\Scripts\ScoreCounter.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Spine Examples\Spine Skeletons\Dragon\dragon.atlas.txt" />

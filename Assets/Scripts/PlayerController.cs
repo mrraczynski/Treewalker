@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 	
 
 
-	public int score;
+	private int score;
 
 
 	private Rigidbody2D rb2d;
@@ -39,7 +39,10 @@ public class PlayerController : MonoBehaviour {
 	private bool isGrounded = false;
 	private bool isFlying = false;
 
-    
+    public int GetScore()
+    {
+		return score;
+    }
 	public void GravityModify(float gravScale, float drag)
     {
 		gameObject.GetComponent<PlayerController>().SetGrounded(false);
