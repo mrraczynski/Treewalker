@@ -116,6 +116,7 @@
     <Compile Include="Assets\Spine Examples\Scripts\Sample Components\CombinedSkin.cs" />
     <Compile Include="Assets\FurBall2D_mobile\Scripts\PlayerController_m.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\SpineGauge.cs" />
+    <Compile Include="Assets\Scripts\ScoreCounter.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\Getting Started Scripts\ConstrainedCamera.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\Sample Components\SkeletonUtility Modules\SkeletonRagdoll.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\Sample Components\SkeletonUtility Modules\SkeletonUtilityGroundConstraint.cs" />
@@ -146,7 +147,6 @@
     <Compile Include="Assets\FiveFinger\KOACharacter\Script\ViewUnit.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\Getting Started Scripts\SpineboyBeginnerView.cs" />
     <Compile Include="Assets\FurBall2D\Scripts\HitVelDetection.cs" />
-    <Compile Include="Assets\Scripts\ScoreCounter.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Spine Examples\Spine Skeletons\Dragon\dragon.atlas.txt" />

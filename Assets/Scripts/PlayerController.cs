@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 	public float boostingTime = 10;
 	public float boostingCoefficient = 2;
 	public bool isInteraction = false;
+	public GameObject checkpointText;
 
 	private float oldGravScale;
 	private float oldDrag;
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour {
 	[Range(0, .3f)] [SerializeField] private float smooth = .05f;
 	private float hor;
 	public GameObject camera;
+	private Vector3 chekpoint;
 
 	private Animator cloudanim;
 	
@@ -38,6 +41,12 @@ public class PlayerController : MonoBehaviour {
 	private Animator anim;
 	private bool isGrounded = false;
 	private bool isFlying = false;
+
+	//функция возвращения к последнему чекпоинту
+	public void OnLatestCheckpoint()
+    {
+		gameObject.transform.position = chekpoint;
+    }
 
     public int GetScore()
     {
@@ -78,6 +87,7 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		checkpointText.SetActive(false);
 		rb2d = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
 		oldMass = gameObject.GetComponent<Rigidbody2D>().mass;
@@ -85,7 +95,7 @@ public class PlayerController : MonoBehaviour {
 		oldDrag = gameObject.GetComponent<Rigidbody2D>().drag;
 		oldAngDrag = gameObject.GetComponent<Rigidbody2D>().angularDrag;
 		//cloudanim = GetComponent<Animator>();
-
+		chekpoint = gameObject.transform.position;
 		Cloud = GameObject.Find("Cloud");
 		//cloudanim = GameObject.Find("Cloud(Clone)").GetComponent<Animator>();
 		//rb2d.gravityScale = -2;
@@ -108,6 +118,16 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+		if (collision.gameObject.CompareTag("Checkpoint"))
+		{
+			chekpoint = gameObject.transform.position;
+			Destroy(collision.gameObject);
+			StartCoroutine(CheckpointDisplay());
+		}
+	}
+
     private void OnCollisionExit2D(Collision2D collision)
     {
 		if (collision.gameObject.CompareTag("MovingPlatform"))
@@ -120,7 +140,7 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		//Debug.Log(isGrounded + " " + doubleJump);
+		Debug.Log(chekpoint);
 		//пока отключим двойной прыжок
 		
 		//Debug.Log(gameObject.GetComponent<Rigidbody2D>().gravityScale);
@@ -220,6 +240,13 @@ public class PlayerController : MonoBehaviour {
 		jumpForce = oldJumpForce;
 		//gameObject.GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color", new Color(0.5f, 0.5f, 0.5f));
 		//Debug.Log(gameObject.GetComponentInChildren<SpriteRenderer>().material.color.r);
+	}
+
+	IEnumerator CheckpointDisplay()
+	{
+		checkpointText.SetActive(true);
+		yield return new WaitForSeconds(3);
+		checkpointText.SetActive(false);
 	}
 
 }

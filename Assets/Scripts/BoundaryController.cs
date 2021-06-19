@@ -10,7 +10,9 @@ public class BoundaryController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene("SampleScene");
+            Debug.Log("here");
+            collision.GetComponent<PlayerController>().OnLatestCheckpoint();
+            //SceneManager.LoadScene("SampleScene");
         }
     }
 

@@ -9,7 +9,6 @@ ScriptsOnlyBuild:
     - CollectController
     - DestroyCloud
     - DestroyCloud_m
-    - FlyingScript
     - InteractionText
     - MovingPlatform
     - ObjectInteraction
@@ -17,6 +16,7 @@ ScriptsOnlyBuild:
     - ParallaxBackground
     - PlayerController
     - PlayerCtrl
+    - ScoreCounter
     - Teleporting
     - TurnOffMusic
     Cinemachine.dll:
@@ -157,17 +157,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4320}
     - Class: 114
-      Script: {instanceID: 5106}
+      Script: {instanceID: 4480}
     - Class: 114
-      Script: {instanceID: 5530}
+      Script: {instanceID: 5108}
     - Class: 114
-      Script: {instanceID: 5616}
+      Script: {instanceID: 5532}
     - Class: 114
-      Script: {instanceID: 5624}
+      Script: {instanceID: 5626}
     - Class: 114
-      Script: {instanceID: 5726}
+      Script: {instanceID: 5728}
     - Class: 114
-      Script: {instanceID: 5822}
+      Script: {instanceID: 5824}
+    - Class: 114
+      Script: {instanceID: 18156}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -423,7 +425,7 @@ ScriptsOnlyBuild:
     className: SpawnFromSkeletonDataExample
   - hash:
       serializedVersion: 2
-      Hash: 508c7995c80f90f57e5fe7bb990d5931
+      Hash: 73602fab606b866c649f0f7557640342
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -1257,6 +1259,12 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
+      Hash: 83e769eee07fc231384c812eedbb8224
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ScoreCounter
+  - hash:
+      serializedVersion: 2
       Hash: b4672b813b40e30095d691cd7c29f752
     assemblyName: Assembly-CSharp.dll
     namespaceName: Spine.Unity.Examples
@@ -1714,4 +1722,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/mrrac/Documents/GitHub/Treewalker/Builds/v0.0.6/Treewalker.exe
+  playerPath: C:/Users/mrrac/Documents/GitHub/Treewalker/Builds/v0.0.8/Treewalker.exe
