@@ -18,6 +18,18 @@ public class PlayerController : MonoBehaviour {
 	public float boostingCoefficient = 2;
 	public bool isInteraction = false;
 	public GameObject checkpointText;
+	[Range(0, .3f)] [SerializeField] private float smooth = .05f;
+	[Header("Enemy Interaction")]
+	public SpriteRenderer playerSprite;
+	public float strikeForce = 10f;
+	public float flashingTime = 0.08f;
+	private bool strike = false;
+	private bool flashing = false;
+	private float strikeVelocity = 0;
+	private float xVector = 0;
+	[Header("Health Interaction")]
+	public int health = 3;
+	private int startHealth;
 
 	private float oldGravScale;
 	private float oldDrag;
@@ -25,9 +37,8 @@ public class PlayerController : MonoBehaviour {
 	private float oldAngDrag;
 	private float flyDist = 10;
 	private Vector3 vel = Vector3.zero;
-	[Range(0, .3f)] [SerializeField] private float smooth = .05f;
 	private float hor;
-	public GameObject camera;
+	//public GameObject camera;
 	private Vector3 chekpoint;
 
 	private Animator cloudanim;
@@ -52,6 +63,10 @@ public class PlayerController : MonoBehaviour {
     {
 		return score;
     }
+	public int GetHealth()
+	{
+		return health;
+	}
 	public void GravityModify(float gravScale, float drag)
     {
 		gameObject.GetComponent<PlayerController>().SetGrounded(false);
@@ -97,6 +112,7 @@ public class PlayerController : MonoBehaviour {
 		//cloudanim = GetComponent<Animator>();
 		chekpoint = gameObject.transform.position;
 		Cloud = GameObject.Find("Cloud");
+		startHealth = health;
 		//cloudanim = GameObject.Find("Cloud(Clone)").GetComponent<Animator>();
 		//rb2d.gravityScale = -2;
 		//rb2d.drag = 1;
@@ -126,6 +142,31 @@ public class PlayerController : MonoBehaviour {
 			Destroy(collision.gameObject);
 			StartCoroutine(CheckpointDisplay());
 		}
+		if (collision.gameObject.CompareTag("Enemy"))
+		{
+			if(health > 1)
+            {
+				health--;
+            }
+            else
+            {
+				health = startHealth;
+				OnLatestCheckpoint();
+				return;
+			}
+			strike = true;
+			strikeVelocity = strikeForce;
+			//rb2d.AddForce(new Vector2(-1f, 0) * jumpForce);
+			//rb2d.velocity = Vector2.up * strikeForce;
+			if(gameObject.transform.position.x <= collision.transform.position.x)
+            {
+				xVector = -1;
+			}
+			else
+            {
+				xVector = 1;
+			}
+		}
 	}
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -140,7 +181,7 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		Debug.Log(chekpoint);
+		//Debug.Log(chekpoint);
 		//пока отключим двойной прыжок
 		
 		//Debug.Log(gameObject.GetComponent<Rigidbody2D>().gravityScale);
@@ -173,7 +214,30 @@ public class PlayerController : MonoBehaviour {
 	{
 		RaycastHit2D[] hits = new RaycastHit2D[1];
 		gameObject.GetComponent<Collider2D>().Raycast(Vector2.down, hits, flyDist);
-		rb2d.velocity = new Vector2(hor * maxSpeed, rb2d.velocity.y);
+		if (!strike)
+		{
+			rb2d.velocity = new Vector2(hor * maxSpeed, rb2d.velocity.y);
+		}
+		//если столкнулись с врагом - отлетаем
+		if (strike)
+		{
+			//запустим мигание спрайта
+			if (!flashing)
+			{
+				flashing = true;
+				StartCoroutine(SpriteFlashing());
+			}
+			//оттолкнём игрока
+			rb2d.velocity = new Vector2(xVector * strikeVelocity, rb2d.velocity.y);
+			if (strikeVelocity == 0f)
+            {
+				strike = false;
+			}
+			strikeVelocity = strikeVelocity - 1f;
+			//rb2d.AddForce(new Vector2(-1f, 0) * jumpForce);
+			//rb2d.velocity = new Vector2(-1 * strikeForce, strikeForce);
+			//StartCoroutine(StrikeForceDuration());
+		}
 		if (hits[0].collider)
 		{
 
@@ -247,6 +311,24 @@ public class PlayerController : MonoBehaviour {
 		checkpointText.SetActive(true);
 		yield return new WaitForSeconds(3);
 		checkpointText.SetActive(false);
+	}
+	//длительность неконтролируемого отлёта после удара
+	IEnumerator StrikeForceDuration()
+	{
+		yield return new WaitForSeconds(.3f);
+		strike = false;
+	}
+
+	//мигание спрайта при столкновении с врагом
+	IEnumerator SpriteFlashing()
+	{
+		while(strike)
+		{
+			playerSprite.enabled = !playerSprite.enabled;
+			yield return new WaitForSeconds(flashingTime);
+		}
+		playerSprite.enabled = true;
+		flashing = false;
 	}
 
 }
