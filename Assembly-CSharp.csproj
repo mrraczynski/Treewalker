@@ -112,6 +112,7 @@
     <Compile Include="Assets\Spine Examples\Scripts\MixAndMatch.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\HandleEventWithAudioExample.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\Getting Started Scripts\TransitionDictionaryExample.cs" />
+    <Compile Include="Assets\Scripts\HealthCounter.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\DraggableTransform.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\Sample Components\CombinedSkin.cs" />
     <Compile Include="Assets\FurBall2D_mobile\Scripts\PlayerController_m.cs" />
@@ -141,7 +142,7 @@
     <Compile Include="Assets\Scripts\CollectController.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\Sample Components\Ghost\SkeletonGhost.cs" />
     <Compile Include="Assets\Scripts\ParallaxBackground.cs" />
-    <Compile Include="Assets\EnemyTriggerController.cs" />
+    <Compile Include="Assets\Scripts\EnemyTriggerController.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\Mecanim as Logic\SkeletonAnimationHandleExample.cs" />
     <Compile Include="Assets\FurBall2D_mobile\Scripts\CameraController_m.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\Getting Started Scripts\SpineboyTargetController.cs" />
@@ -149,7 +150,7 @@
     <Compile Include="Assets\FiveFinger\KOACharacter\Script\ViewUnit.cs" />
     <Compile Include="Assets\Spine Examples\Scripts\Getting Started Scripts\SpineboyBeginnerView.cs" />
     <Compile Include="Assets\FurBall2D\Scripts\HitVelDetection.cs" />
-    <Compile Include="Assets\Scripts\HealthCounter.cs" />
+    <Compile Include="Assets\Scripts\Mover.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Spine Examples\Spine Skeletons\Dragon\dragon.atlas.txt" />
